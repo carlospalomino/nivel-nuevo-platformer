@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://dhcpt1kt8cs0g"]
+[gd_scene format=4 uid="uid://b734djy43ukd6"]
 
 [ext_resource type="PackedScene" uid="uid://8st4scqt06l8" path="res://components/player/player.tscn" id="2_7yl00"]
 [ext_resource type="PackedScene" uid="uid://jnrusvm3gric" path="res://spaces/background.tscn" id="2_tb5a2"]
@@ -21,8 +21,10 @@
 [node name="GameLogic" parent="." unique_id=1461208797 instance=ExtResource("3_xbkvd")]
 win_by_collecting_coins = true
 win_by_reaching_flag = true
+gravity = 300.0
 
 [node name="Background" parent="." unique_id=474635500 instance=ExtResource("2_tb5a2")]
+self_modulate = Color(0.11372549, 0.13333334, 0.23137255, 0.1882353)
 
 [node name="Dangerzone" parent="." unique_id=761224350 instance=ExtResource("4_2mg6t")]
 position = Vector2(3072, 1216)
@@ -289,6 +291,7 @@ position = Vector2(156, 500)
 collision_layer = 1
 collision_mask = 7
 sprite_frames = ExtResource("9_qmofe")
+double_jump = true
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1155688518]
 position = Vector2(0, 15)
