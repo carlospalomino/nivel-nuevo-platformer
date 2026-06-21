@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://jnrusvm3gric"]
 
-[ext_resource type="Texture2D" uid="uid://dbuavdqia0ps2" path="res://assets/background-void.png" id="1_atv8a"]
+[ext_resource type="Texture2D" uid="uid://84u2sb3d01av" path="res://assets/background-void.png" id="1_atv8a"]
 
 [node name="Background" type="Node2D" unique_id=474635500]
 editor_description = "This scene uses a Parallax2D node to repeat a background image endlessly in all directions, and make it appear to be a long way away from the camera by having it scroll more slowly than the level in the foreground."
