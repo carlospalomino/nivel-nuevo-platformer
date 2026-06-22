@@ -14,8 +14,11 @@ extends CharacterBody2D
 ## Can the enemy be squashed by the player?
 @export var squashable: bool = true
 
-## The direction the enemy will start moving in.
-@export_enum("Left:0", "Right:1") var start_direction: int = 0
+## Variable para la direccion del enemigo (left horizontal, Right vertical)
+@export_enum("Left/Up:0", "Right/Down:1") var start_direction: int = 0
+
+## Variable para el tipo de movimiento
+@export_enum("Horizontal:0", "Vertical:1") var movement_type: int = 0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -40,24 +43,36 @@ func _ready():
 
 
 func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
+	## Aca se configuro para que se pueda hacer efectivo el movimiento
+	## este es el horizontal
+	if movement_type == 0:
+		# Add the gravity.
+		if not is_on_floor():
+			velocity.y += gravity * delta
 
-	if not fall_off_edge and (_left_ray.is_colliding() or _right_ray.is_colliding()):
-		if direction == -1 and not _left_ray.is_colliding():
-			direction = 1
-		elif direction == 1 and not _right_ray.is_colliding():
-			direction = -1
+		if not fall_off_edge and (_left_ray.is_colliding() or _right_ray.is_colliding()):
+			if direction == -1 and not _left_ray.is_colliding():
+				direction = 1
+			elif direction == 1 and not _right_ray.is_colliding():
+				direction = -1
 
-	velocity.x = direction * speed
+		velocity.x = direction * speed
 
-	_sprite.flip_h = velocity.x < 0
+		_sprite.flip_h = velocity.x < 0
 
-	move_and_slide()
+		move_and_slide()
 
-	if velocity.x == 0 and is_on_floor():
-		direction *= -1
+		if velocity.x == 0 and is_on_floor():
+			direction *= -1
+	else:
+		## Este es el vertical ignora la gravedad
+		velocity.x = 0
+		velocity.y = direction * speed
+
+		move_and_slide()
+		## al chocar cambia de direccion
+		if velocity.y == 0:
+			direction *= -1
 
 
 func _on_gravity_changed(new_gravity):

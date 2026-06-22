@@ -395,12 +395,15 @@ position = Vector2(11838, 744)
 
 [node name="Enemy7" parent="Enemies" unique_id=1907581679 instance=ExtResource("9_l6smt")]
 position = Vector2(10932, 358)
+movement_type = 1
 
 [node name="Enemy9" parent="Enemies" unique_id=516154677 instance=ExtResource("9_l6smt")]
 position = Vector2(12094, 257)
+movement_type = 1
 
 [node name="Enemy10" parent="Enemies" unique_id=1001373575 instance=ExtResource("9_l6smt")]
 position = Vector2(11827, -1221)
+movement_type = 1
 
 [node name="Enemy11" parent="Enemies" unique_id=563036667 instance=ExtResource("9_l6smt")]
 position = Vector2(10623, 736)
